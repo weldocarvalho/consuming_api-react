@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import axios from '../../services/axios';
+import { Wrapper } from '../../styles/GlobalStyle';
 
 export default function Students() {
   const [students, setStudents] = useState([]);
@@ -16,10 +17,10 @@ export default function Students() {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       {students.map((student) => (
         <li key={student.id}>{student.name}</li>
       ))}
-    </>
+    </Wrapper>
   );
 }
