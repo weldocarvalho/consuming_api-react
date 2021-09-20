@@ -1,26 +1,11 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import Students from './pages/Students';
 
 function App() {
-  const [students, setStudents] = useState([])
-
-  useEffect(() => {
-    async function getData() {
-      const response = await axios.get('http://localhost:3535/students')
-      const { students: studentsData } = response.data
-      setStudents(studentsData)
-    }
-
-    getData()
-  }, [])
-
   return (
-    <div className="App">
-      {students.map((student) => (
-        <li key={student.id}>{student.name}</li>
-      ))}
-    </div>
-  )
+    <>
+      <Students />
+    </>
+  );
 }
 
-export default App
+export default App;
