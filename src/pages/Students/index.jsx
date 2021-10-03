@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { FaUserCircle, FaEdit, FaWindowClose } from 'react-icons/fa';
 
 import axios from '../../services/axios';
+
 import { Wrapper } from '../../styles/GlobalStyle';
+import { ProfilePicture, StudentWrapper } from './styled';
 
 export default function Students() {
   const [students, setStudents] = useState([]);
@@ -16,11 +19,36 @@ export default function Students() {
     getData();
   }, []);
 
+  const renderImg = (studentPicture) => (
+    <img src={studentPicture.picture_url} alt="fotos dos estudantes" />
+  );
+
   return (
     <Wrapper>
-      {students.map((student) => (
-        <li key={student.id}>{student.name}</li>
-      ))}
+      <StudentWrapper>
+        <h1>ALUNOS</h1>
+        {students.map((student) => (
+          <div key={student.id}>
+            <ProfilePicture>
+              {student.picture ? (
+                renderImg(student)
+              ) : (
+                <FaUserCircle size={72} />
+              )}
+            </ProfilePicture>
+
+            <span>{student.name}</span>
+            <span>{student.email}</span>
+
+            <span>
+              <FaEdit />
+            </span>
+            <span>
+              <FaWindowClose />
+            </span>
+          </div>
+        ))}
+      </StudentWrapper>
     </Wrapper>
   );
 }

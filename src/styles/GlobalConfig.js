@@ -13,6 +13,10 @@ export default createGlobalStyle`
     font-family: sans-serif;
   }
 
+  body {
+    background-color: #eeeeee;
+  }
+
   a {
     text-decoration: none;
   }
