@@ -1,13 +1,16 @@
-import Students from './pages/Students';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './routes';
 
 import GlobalConfig from './styles/GlobalConfig';
+import Header from './components/Header';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalConfig />
-      <Students />
-    </>
+      <Header />
+      <Routes />
+    </BrowserRouter>
   );
 }
 
