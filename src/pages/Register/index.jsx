@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
 import axios from '../../services/axios';
+import history from '../../services/history';
 
 import { Wrapper } from '../../styles/GlobalStyle';
 import { Form } from './styled';
@@ -42,16 +43,20 @@ export default function Register() {
 
     if (!formErrors) {
       try {
-        const { data } = await axios.post('/users', {
+        await axios.post('/users', {
           id,
           name,
           lastname,
           email,
           password,
         });
-        console.log(data);
+        toast.success('usuárix cadastradx com sucesso');
+        history.push('/login');
       } catch (err) {
-        console.log(err);
+        const { response } = err;
+        const { errors } = response.data;
+
+        errors.map((error) => toast.error(error));
       }
     }
   };
