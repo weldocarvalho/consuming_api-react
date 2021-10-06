@@ -15,6 +15,7 @@ export default createGlobalStyle`
 
   body {
     background-color: #eeeeee;
+    font-size: 1.7rem;
   }
 
   a {
